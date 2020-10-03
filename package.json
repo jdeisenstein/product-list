@@ -1,0 +1,25 @@
+{
+  "name": "product-list",
+  "version": "1.0.0",
+  "description": "This project has been created by a student at Project Shift, a software engineering fellowship located in Downtown Durham.  The work in this repository is wholly of the student based on a sample starter project that can be accessed by looking at the repository that this project forks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdeisenstein/product-list.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdeisenstein/product-list/issues"
+  },
+  "homepage": "https://github.com/jdeisenstein/product-list#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "faker": "^5.1.0",
+    "mongoose": "^5.10.7"
+  }
+}
