@@ -1,9 +1,14 @@
-const router = require('express').Router();
-const faker = require('faker');
-const Product = require('../models/product');
+const router        = require('express').Router();
+const faker         = require('faker');
+const Product       = require('../models/product');
+const itemsPerPage  = 9;
+const totalPages    = 10;
+const defaultPage   = 1;
+let sortOrder       = { price: 1 };
+let filterCategory  = {};
 
 router.get('/generate-fake-data', (req, res, next) => {
-    for (let i = 0; i < 90; i++) {
+    for (let i = 0; i < totalPages * itemsPerPage; i++) {
         let product = new Product();
         
         product.category = faker.commerce.department();
@@ -19,15 +24,28 @@ router.get('/generate-fake-data', (req, res, next) => {
 });
 
 router.get('/products', (req, res, next) => {
-    const perPage = 9;
-    const defaultStartPage = 1;
-    const page = req.query.page || defaultStartPage;  // if no start page param, use default
-    Product.find({})                                  // no filter set
-        .skip  ((perPage-1) * page)                   // offset to initial item to send back
-        .limit (perPage)                              // number of items in response
-        .exec  ((error, products) => {   
-            Product.count()                           // total number of items in Products collection
-                .exec((err, productCount) => { 
+
+    const page = req.query.page || defaultPage;  // last page specified is the default
+    const categoryValue = req.query.category;    // last category specified is the default
+    const searchValue = req.query.search;        // if name not specified, omit from search
+    const sortValue = req.query.sort;            // last sort specified is the default
+
+    // Validity check and Edge check
+    filterCategory = categoryValue ? { category: categoryValue } : filterCategory
+    sortOrder      = sortValue ? (sortValue < 0 ? { price: -1 } : { price: 1 }) : sortOrder
+
+    console.log(`page: ${page}  category: ${categoryValue}  search: ${searchValue}  sort: ${sortValue}`);
+    console.log("sort object = ", sortOrder)
+    console.log("filter object = ", filterCategory)
+
+    Product
+        .find (filterCategory)
+        .sort (sortOrder)
+        .skip (itemsPerPage * page - itemsPerPage).limit(itemsPerPage)
+        .exec ((error, products) => {   
+            Product
+                .count () 
+                .exec ((err, productCount) => { 
                     if (err) return next(err)
                     const results = { listOfProducts: products, countOfAllProducts: productCount };
                     res.send(results); 
