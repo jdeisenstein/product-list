@@ -9,30 +9,28 @@ let filterCategory  = {};
 
 router.get('/generate-fake-data', (req, res, next) => {
     for (let i = 0; i < totalPages * itemsPerPage; i++) {
-        let product = new Product();
         
+        let product      = new Product();
         product.category = faker.commerce.department();
         product.name     = faker.commerce.productName();
         product.price    = faker.commerce.price();
         product.image    = 'https://via.placeholder.com/250?text=Product+Image';
         
-        product.save((err) => {
-            if (err) throw err;
-        });
+        product.save((err) => { if (err) throw err });
     }
     res.end();
 });
 
 router.get('/products', (req, res, next) => {
 
-    const page = req.query.page || defaultPage;  // last page specified is the default
-    const categoryValue = req.query.category;    // last category specified is the default
-    const searchValue = req.query.search;        // if name not specified, omit from search
-    const sortValue = req.query.sort;            // last sort specified is the default
+    const page          = req.query.page || defaultPage;  // last page specified is the default
+    const categoryValue = req.query.category;             // last category specified is the default
+    const searchValue   = req.query.search;               // if name not specified, omit from search
+    const sortValue     = req.query.sort;                 // last sort specified is the default
 
-    // Validity check and Edge check
-    filterCategory = categoryValue ? { category: categoryValue } : filterCategory
-    sortOrder      = sortValue ? (sortValue < 0 ? { price: -1 } : { price: 1 }) : sortOrder
+    // Add Validity and Edge condition check
+    filterCategory = categoryValue ? { category: categoryValue } : {}
+    sortOrder      = sortValue ? { price: sortValue } : { _id: 1 }
 
     console.log(`page: ${page}  category: ${categoryValue}  search: ${searchValue}  sort: ${sortValue}`);
     console.log("sort object = ", sortOrder)
