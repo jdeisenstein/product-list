@@ -4,10 +4,11 @@ const Product       = require('../models/product');
 const itemsPerPage  = 9;
 const totalPages    = 10;
 const defaultPage   = 1;
-let sortOrder       = { price: 1 };
-let filterCategory  = {};
+let sortOrder       = {};
+let categoryFilter  = {};
 
 router.get('/generate-fake-data', (req, res, next) => {
+
     for (let i = 0; i < totalPages * itemsPerPage; i++) {
         
         let product      = new Product();
@@ -21,33 +22,46 @@ router.get('/generate-fake-data', (req, res, next) => {
     res.end();
 });
 
-router.get('/products', (req, res, next) => {
+router.get('/products', async (req, res, next) => {
+    try {
+        const page          = req.query.page || defaultPage; 
+        const categoryValue = req.query.category;
+        const searchValue   = req.query.search;
+        const sortValue     = req.query.sort;
+        
+        // convert API sort argument into .sort() argument or abort on bad value
 
-    const page          = req.query.page || defaultPage;  // last page specified is the default
-    const categoryValue = req.query.category;             // last category specified is the default
-    const searchValue   = req.query.search;               // if name not specified, omit from search
-    const sortValue     = req.query.sort;                 // last sort specified is the default
+        if (sortValue) {
+            switch (sortValue) {
+                case 'ASC':
+                    sortOrder = { price: 1 };
+                    break
+                case 'DESC':
+                    sortOrder = { price: -1 };
+                    break
+                default:
+                    res.send({ statusCode: 500, errorMsg: 'invalid sort argument' });
+                    return
+            }
+        } else {
+            sortOrder = {};
+        }
 
-    // Add Validity and Edge condition check
-    filterCategory = categoryValue ? { category: categoryValue } : {}
-    sortOrder      = sortValue ? { price: sortValue } : { _id: 1 }
+        categoryValue ? categoryFilter = { category: categoryValue } : categoryFilter = {};
 
-    console.log(`page: ${page}  category: ${categoryValue}  search: ${searchValue}  sort: ${sortValue}`);
-    console.log("sort object = ", sortOrder)
-    console.log("filter object = ", filterCategory)
+        products = []
+        productCount = await Product.countDocuments(categoryFilter)
+        if (productCount && productCount > 0) {
 
-    Product
-        .find (filterCategory)
-        .sort (sortOrder)
-        .skip (itemsPerPage * page - itemsPerPage).limit(itemsPerPage)
-        .exec ((error, products) => {   
-            Product
-                .count () 
-                .exec ((err, productCount) => { 
-                    if (err) return next(err)
-                    const results = { listOfProducts: products, countOfAllProducts: productCount };
-                    res.send(results); 
-                });
-        });
+            products = await Product.find(categoryFilter)
+                .sort(sortOrder)
+                .skip(itemsPerPage * page - itemsPerPage)
+                .limit(itemsPerPage)
+        }
+        res.send({ productList: products, productCount: productCount })
+        
+    } catch (error) {
+        res.send (error);
+    }
 });
 module.exports = router;
