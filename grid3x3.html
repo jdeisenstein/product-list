@@ -21,14 +21,12 @@
             display:                flexbox;
             align-content:          space-around;
             text-align:             center;
-            margin-top:             0.0rem;
-            margin-bottom:          0.5rem;
             margin-left:            30%;
             margin-right:           30%;
             transform:              scale3d(1.0, 1.0, 1.0);
             filter:                 drop-shadow( 0, 0, 12px, lightblue);
             transition:             transform 400ms ease-in-out 200ms, filter 100ms ease-in-out;
-        }
+            }
         .app-title:hover {
             filter:                 drop-shadow(0 0 0.5rem rgba(236, 236, 0, 0.50));
             transform:              scale3d(1.2, 1.2, 1.2);
@@ -37,127 +35,98 @@
         button:focus {
             outline:0;
         }
-        input:focus {
-            outline:0;
-        }
         .input-group {
+            display:                flex;
+            justify-content:        space-between;
             font:                   Roboto;
             font-weight:            100;
-            font-size:              0.80rem;
+            font-size:              0.70rem;
             color:                  gray;
-            display:                flex;
-            width:                  60%;
-            margin-left:            10%;
-            margin-right:           30%;
-            margin-top:             0rem;
+            width:                  51%;
+            height:                 1.75rem;
+            border:                 0 none lightgray;
+            margin-left:            24.5%;
+            margin-right:           24.5%;
         }
        #query-string {
             height:                 auto;
-            width:                  20%;
-            border-style:           none;
-            margin-top:             0.25rem;
-            margin-bottom:          0.5rem;
-            margin-left:            0rem;
             margin-right:           2rem;
-            display:                flex;
-            justify-content:        space-around;
         }
         #search-query {
             width:                  auto;
-            height:                 2.0rem;
-            margin-right:           0.4rem;
-            margin-left:            4rem;
-            margin-top:             0.12rem;
-            margin-bottom:          0.00rem;
-            font:                   Robato;
-            font-size:              0.80rem;
-            font-weight:            100;
+            height:                 auto;
+            margin-right:           0.40rem;
+            font-size:              0.70rem;
             color:                  slategray;
             background-color:       whitesmoke; /*rgba(253,253,253,0.50);*/
             text-justify:           left;
         }
         #search-button{
-            border-style:           none;
-            border-radius:          5px;
-            margin-top:             0.1rem;
-            margin-bottom:          0.00rem;
-            margin-right:           7.5rem;
-            margin-left:            0rem;
-            font-size:              120%;
-            font-weight:            500;
-            height:                 2.0rem;
-            width:                  5.0rem;
+            border-radius:          3px;
+            border:                 0 none yellowgreen;
+            margin-right:           3rem;
+            margin-left:            0.2rem;
+            height:                 auto;
+            width:                  5rem;
             transform:              scale3d(1, 1, 1);
             transition:             all 200ms ease-in-out;
-            background-color:       #DE7957;
+            background-color:       yellowgreen;/*#DE7957;*/
             color:                  white;
-        }
+            font-size:              120%;
+            font-weight:            500;
+       }
         #search-button:hover{
-            background-color:       #FC6C3C;
-            color:                  #FFE8E8;
-            transform:              scale3d(1.1, 1.1, 1);
+            background-color:       lawngreen;/*#FC6C3C;*/
+            color:                  white;/*#FFE8E8;*/
+            transform:              scale3d(1.15, 1.2, 1);
             transition:             all 100ms ease-in-out;
-        }
+            font-size:              120%;
+            font-weight:            700;
+       }
         #search-button:active{
-            transform:              scale3d(0.9, 0.9, 1);
+            transform:              scale3d(0.75, 0.75, 1);
             transition:             all 100ms ease-in-out;
-            background-color:       #E75727;
-            color:                  #F8E0E0;
+            background-color:       yellowgreen;/*#E75727;*/
+            color:                  white;/*#F8E0E0;*/
+            font-size:              120%;
+            font-weight:            500;
         }
-
         #query-params {
             display:                flex;
-            justify-content:        space-around;
-            font:                   Robato;
-            font-size:              0.80rem;
-            font-weight:            100;
-            width:                  20%;
-            height:                 2.0rem;
-            border-style:           none;
-            margin-top:             0.20rem;
-            margin-bottom:          0.15rem;
-            margin-left:            4rem;
+            justify-content:        space-between;
+            width:                  25%;
+            height:                 auto;
+            margin-left:            4%;
             margin-right:           0.5rem;
         }
-        #category-selector{
+        #category-selector {
             margin-right:           1.5rem;
-            margin-left:            18.5rem;
-            margin-bottom:          0.10rem;
-            margin-top:             0.00rem;
-            font:                   Robato;
-            font-size:              0.80rem;
-            font-weight:            100;
-            border-color:           lightgray;
+            margin-left:            0rem;
             color:                  gray;
-            background-color:       whitesmoke; /*rgba(253,253,253,0.50);*/
+            background-color:       whitesmoke;
+            border-color:           lightgray;
         }
         #sort-selector{
-            margin-bottom:          0.10rem;
-            margin-top:             0.00rem;
-            font:                   Robato;
-            font-size:              0.80rem;
-            font-weight:            100;
-            border-color:           lightgray;
             color:                  gray;
-            background-color:       whitesmoke;/* rgba(253,253,253,0.50);*/
+            background-color:       whitesmoke;
+            border-color:           lightgray;
         }
 
         .inventory { 
             display:                flex;
-            justify-content:        space-around;
-            margin-top:             -1.0rem;
-            margin-left:            15%;
-            margin-right:           15%;
+            justify-content:        stretch;
+            width:                  55%;
+            height:                 580px;
+            margin:                 auto;
         }
         .container { 
+            margin-top:             -1.5rem;
             display:                grid;
-            width:                  68.7%;
-            height:                 620px;
-            margin-top:             1%;
-            margin-bottom:          0%;
-            align-content:          center;
+            justify-items:          stretch;
+            align-items:            stretch;
             grid-template-columns:  33.3% 33.3% 33.3%;
             grid-template-rows:     33.3% 33.3% 33.3%;
+            margin-bottom:          1.5rem;
 
         }
         .container>div {
@@ -165,37 +134,11 @@
             text-align:             left;
             text-indent:            1ch;
             color:                  lightgray;
-            height:                 180px;
-            width:                  190px;
-            margin-top:             2%;
-            margin-bottom:          2%;
-            margin-left:            4%;
-            margin-right:           4%;
+            max-height:             90%;
+            max-width:              90%;
             transform:              scale3d(1, 1, 1);
-        }
-        .col0 {
-            margin-left:            0.4rem;
-            margin-right:           0.0rem;
-        }
-        .col1 {
-            margin-left:            0.7rem;
-            margin-right:           0.0rem;
-        }
-        .col2 {
-            margin-left:            1.0rem;
-            margin-right:           0.0rem;
-        }
-        .row0 {
-            margin-top:             0.4rem;
-            margin-bottom:          1.0rem;
-        }
-        .row1 {
-            margin-top:             0.5rem;
-            margin-bottom:          1.0rem;
-        }
-        .row2 {
-            margin-top:             0.6rem;
-            margin-bottom:          1.0rem;
+            margin-left:            5%;
+            margin-top:             10%;
         }
 
         #col0row0, #col1row0, #col2row0,
@@ -370,12 +313,12 @@
 
 <body>
     
-    <h1 class='app-title'>PRODUCT</h1>
+    <h1 class='app-title'>El Producto</h1>
     <section id="product-finder" class="input-group mb-3">
         <input type="text" class="form-control" id="search-query" placeholder="Enter Product Name" value="">
-        <button type="button" class="search" id="search-button">Search</button>
-        <div name="query-scope" id="query-params">
-            <select name="category" id="category-selector">
+        <button type="button" class="search" id="search-button">Show Me!</button>
+        <select name="category" id="category-selector">
+            <div>
                 <option value="">Shop by Department...</option>
                 <option value="option01" id="category01">Kids</option>
                 <option value="option02" id="category02">Babies</option>
@@ -383,15 +326,17 @@
                 <option value="option04" id="category04">Clothing</option>
                 <option value="option05" id="category05">Computers</option>
                 <option value="option06" id="category06">Goldfish</option>
-            </select>
-            <select name="sort" id="sort-selector">
+            </div>
+        </select>
+        <select name="sort" id="sort-selector">
+            <div>
                 <option value="">Sort by...</option>
                 <option value="option01" id="option01">Sort by Price: Low to High</option>
                 <option value="option02" id="option02">Sort by Price: High to Low</option>
                 <option value="option03" id="option03">Sort by Product Name: A to Z</option>
                 <option value="option04" id="option04">Sort by Product Name: Z to A</option>
-            </select>
-        </div>
+            </div>
+        </select>
     </section>
     <section class='inventory'>
         <div id='grid-frame' class='container'>
