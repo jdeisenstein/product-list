@@ -1,14 +1,15 @@
 const router               = require ('express').Router();
 const faker                = require ('faker');
 const Question             = require ('../models/schema-question.js');
-const defaultItemsPerPage  = 5;
+const defaultItemsPerPage  = 3;
 const defaultPage          = 1;
 let sortOrder              = {};
 let searchFilter           = {};
 
 router.get('/make-fake-questions', (req, res, next) => {
 
-//  Add 100 more fake questions to the data base
+//  These choices are used for a genre of question designed to 
+//  gauge a participant's level of agreement with a statement
     const agreementChoices = [
         'Strongly Agree',
         'Agree',
@@ -17,7 +18,8 @@ router.get('/make-fake-questions', (req, res, next) => {
         'Somewhat Disagree',
         'Disagree',
         'Strongly Disagree']
-
+    
+//  Add 100 more fake questions to the data base
     for (let i = 0; i < 100; i++) {
         
         let myQuestion = new Question();
@@ -25,7 +27,7 @@ router.get('/make-fake-questions', (req, res, next) => {
         myQuestion.category = faker.commerce.department ();
         myQuestion.question = faker.commerce.productName ();
 
-//      Questions in this category guage participant's level of agreement with the statement
+//      Questions in this category guage participant's level of agreement with a statement
         if (myQuestion.category === 'Baby') {
             for (let myIndex = 0; myIndex < 7; myIndex++) {
                 myQuestion.choices.push ({ index: myIndex, choice: agreementChoices[myIndex] });
@@ -43,15 +45,12 @@ router.get('/make-fake-questions', (req, res, next) => {
 
 router.get('/questions', async (req, res, next) => {
     try {
-        const page          = req.query.page || defaultPage; 
+        const pageValue     = req.query.page  || defaultPage; 
+        const itemsValue    = req.query.items || defaultItemsPerPage;
         const categoryValue = req.query.category;
         const searchValue   = req.query.search;
         const sortValue     = req.query.sort;
         
-//      An API page value of 'ALL' returns all complying questions, sorted.  
-        let itemsPerPage;
-        page === 'ALL' ?  itemsPerPage = 0 : itemsPerPage = defaultItemsPerPage;
-
 //      Convert API sort argument into .sort() argument or abort on bad value
         if (sortValue) {
             switch (sortValue) {
@@ -82,6 +81,8 @@ router.get('/questions', async (req, res, next) => {
         } else {
             searchFilter = {}
         }
+        const itemsPerPage  = itemsValue * 1;
+        const initialOffset = itemsPerPage * (pageValue - 1);
 
 //      Count and return the questions meeting the requirements
         questions = []
@@ -89,8 +90,8 @@ router.get('/questions', async (req, res, next) => {
         if (questionCount && questionCount > 0) {
 
             questions = await Question.find (searchFilter)
-                .sort (sortOrder)
-                .skip (itemsPerPage * page - itemsPerPage)
+                .sort  (sortOrder)
+                .skip  (initialOffset)
                 .limit (itemsPerPage)
         }
         res.send ({ questionList: questions, questionCount: questionCount })
