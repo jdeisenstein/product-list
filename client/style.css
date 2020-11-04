@@ -1,0 +1,216 @@
+html {
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Courier","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;;
+}
+
+body {
+    width:                  60%;
+    max-width:              80%;
+    min-width:              420px;
+ /*   margin:                 2em auto;*/
+    font:                   .9em/1.2 Courier, Arial, Helvetica, sans-serif;
+}
+
+header {
+    color:                  black;
+}
+
+.app-title{
+    font-family:            Helvetica;/*Avenir;*/
+    font-size:              2rem;
+    font-weight:            thin;
+    text-align:             center;
+    color:                  lightgray;
+    margin-top:             20px;
+    margin-bottom:          2.5rem;
+}
+#idi-o-t{
+    color:                  red;
+}
+.mc-objects {
+    display:                grid;
+    min-height:             5rem;
+    grid-template-columns:  5.4rem 1fr;
+    grid-template-rows:     10rem repeat(5, auto);
+    gap:                    1px 1px;
+    color:                  rgb(63, 63, 63);
+}
+.mc-question-box {
+    padding:                1.00rem;
+    font-size:              120%;
+    color:                  darkgray;
+    background-color:       transparent;
+    border:                 1px solid white;
+    transition:             all 100ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
+}
+.mc-question-text-box {
+    min-height:             5.0rem;
+    border-radius:          7.0rem;
+    padding:                0.00rem 1.50rem 0.00rem 1.50rem;
+    border-width:           0.5px;
+    border-color:           white;
+    color:                  gray;
+    background-color:       rgba(239, 235, 235, 100%);
+    box-shadow:             0px  2px 5px 2px darkgray inset, 
+                            0px -4px 7px 3px white inset;
+}
+
+.mc-response-box {
+    background-color:       silver;
+    color:                  gray;
+    padding:                0.25rem;
+    transition:             all 100ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
+}
+.mc-response-box:hover {
+    transform:              scale3d(1.05, 1.05, 2);
+    box-shadow:             1px 1px 8px 1px  lightcyan;
+    transition:             all 200ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
+}
+
+.mc-response-box:active {
+    transform:              scale(0.97);
+    transition:             all 200ms ease-out;
+}
+
+.mc-response-text-box {
+    background-color:       rgba(242, 235, 235, 100%);
+    min-height:             4.0rem;
+    vertical-align:         center;
+    font-size:              110%;
+    margin:                 0.25rem;
+    padding:                0.25rem;
+    border:                 0;
+    box-shadow:              2px  2px 7px 1px  gray inset, 
+                            -2px -2px 7px 1px white inset;
+    transition:             all 100ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
+}
+.mc-response-text-box:hover {
+    background-color:       rgba(255, 248, 248, 100%);
+    transition:             all 200ms ease-out;
+}
+.mc-response-text-box:active {
+    background-color:       rgba(242, 235, 235, 100%);
+    box-shadow:              1px  1px 1px 1px  darkcyan inset, 
+                            -1px -1px 0px 0px  cyan inset;
+    transition:             all 100ms ease-out;
+}
+.mc-response-text {
+    background-color:       transparent;
+    margin:                 0.50rem 0.25rem 0.25rem 1.00rem;
+}
+
+.mc-response-button-box {
+    background-color:       lightgray;
+    display:                flex;
+    flex-flow:              column;
+    justify-content:        center;
+}
+.mc-response-button {
+    font:                   courier;
+    font-size:              1.5rem;   
+    font-weight:            300; 
+    text-align:             center;  
+    color:                  navy; 
+    width:                  3rem;
+    height:                 3rem;
+    border-radius:          2rem;
+    border-width:           0.5px;
+    border-color:           gray;
+    border-style:           solid;
+    box-shadow:             -15px -15px 1rem 0px  gray inset, 
+                            2px   2px 2px  2px  rgba(250, 250, 250, 50%), 
+                            -2px  -2px 3px  2px  rgba(150, 150, 150, 40%);
+    background-color:       whitesmoke;
+    transition:             color 600ms ease-out, background-color 800ms ease-out,
+                            transform 400ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
+}
+.mc-response-button:hover {
+    box-shadow:             -15px -15px 1rem 0px  cyan inset, 
+                            2px   2px 3px  2px  rgba(0, 255, 255, 0.7),
+                            -2px  -2px 3px  2px  rgba(0, 255, 255, 0.3);
+    background-color:       lightcyan;
+    border-color:           lightgray;
+    color:                  rgb(0, 225, 225);
+    transform:              scale(1.25);
+    transition:             transform 200ms cubic-bezier(0.535, 0.005, 0.000, 1.635),
+                            color 400ms ease-out 200ms;
+}
+.mc-response-button:active {
+    box-shadow:             -15px -15px 1rem 0px  cyan inset, 
+                            0px   0px 15px  5px rgba(0, 255, 255, 0.7),
+                            -2px  -2px 4px  2px  rgba(0, 255, 255, 0.3);
+    transform:              scale(0.85);
+    transition:             all 100ms ease-out;
+}
+
+/* Grid Layout: 6 rows, 2 columns */  
+
+#mc-response-button-label01 {
+    color:                  inherit;
+    margin-top:             0.45rem;
+    margin-left:            0.00rem;
+}
+#mc-response-button-label02 {
+    color:                  inherit;
+    margin-top:             0.50rem;
+}
+#mc-response-button-label03 {
+    color:                  inherit;
+    margin-top:             0.45rem;
+    margin-right:           0.05rem;
+}
+#mc-response-button-label04 {
+    color:                  inherit;
+    margin-right:           0.05rem;
+    margin-top:             0.55rem;
+}
+#mc-response-button-label05 {
+    color:                  inherit;
+    margin-top:             0.45rem;
+    margin-left:            0.00rem;
+}
+#mc-response-button-box01{
+    grid-column:            1;
+    grid-row:               2 / span 1;
+}
+#mc-response-button-box02{
+    grid-column:            1;
+    grid-row:               3 / span 1;
+}
+#mc-response-button-box03{
+    grid-column:            1;
+    grid-row:               4 / span 1;
+}
+#mc-response-button-box04{
+    grid-column:            1;
+    grid-row:               5 / span 1;
+}
+#mc-response-button-box05{
+    grid-column:            1;
+    grid-row:               6 / span 1;
+}
+
+#mc-question-box01{
+    grid-column:            1 / span 2;
+    grid-row:               1 ;
+}
+
+#mc-response-box01{
+    grid-column:            2;
+    grid-row:               2 / span 1;
+}
+#mc-response-box02{
+    grid-column:            2;
+    grid-row:               3 / span 1;
+}
+#mc-response-box03{
+    grid-column:            2;
+    grid-row:               4 / span 1;
+}
+#mc-response-box04{
+    grid-column:            2;
+    grid-row:               5 / span 1;
+}
+#mc-response-box05{
+    grid-column:            2;
+    grid-row:               6 / span 1;
+}
