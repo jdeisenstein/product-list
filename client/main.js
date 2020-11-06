@@ -26,9 +26,8 @@ const searchButtonHandler = function () {
     $('#search-button').on('click', function () {
         var search = $('#search-query').val();
 
-        const pollstarQuestionAPI = `https://api.openweathermap.org/data/2.5/weather?q=${search}${units}&appid=${apiKey}`;
-        const currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=${search}${units}&appid=${apiKey}`;
-        if (search.length > 0) { fetchBoy(currentWeatherAPI, processCurrentWeatherJson, errorHandler); }
+        const pollstarQuestionAPI = `localhost:8000/questions?items=1&page=3`;
+        if (search.length > 0) { fetchBoy(pollstarQuestionAPI, processCurrentWeatherJson, errorHandler); }
     });
 }
 // eraseButtonHandler - MVC Controller

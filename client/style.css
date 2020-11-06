@@ -1,12 +1,13 @@
+
 html {
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Courier","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;;
 }
 
 body {
-    width:                  60%;
-    max-width:              80%;
+    width:                  auto;
+    max-width:              60%;
     min-width:              420px;
- /*   margin:                 2em auto;*/
+    margin:                 auto;
     font:                   .9em/1.2 Courier, Arial, Helvetica, sans-serif;
 }
 
@@ -21,7 +22,7 @@ header {
     text-align:             center;
     color:                  lightgray;
     margin-top:             20px;
-    margin-bottom:          2.5rem;
+    margin-bottom:          1rem;
 }
 #idi-o-t{
     color:                  red;
@@ -30,68 +31,99 @@ header {
     display:                grid;
     min-height:             5rem;
     grid-template-columns:  5.4rem 1fr;
-    grid-template-rows:     10rem repeat(5, auto);
+    grid-template-rows:     12rem repeat(5, auto);
     gap:                    1px 1px;
     color:                  rgb(63, 63, 63);
 }
+
 .mc-question-box {
-    padding:                1.00rem;
+    display:                flex;
+    flex-flow:              column;
+    justify-content:        flex-end;
+    align-items:            stretch;
+    padding:                0 0.75rem 1.5rem 0.75rem;
     font-size:              120%;
     color:                  darkgray;
     background-color:       transparent;
-    border:                 1px solid white;
+    border:                 0;
     transition:             all 100ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
 }
 .mc-question-text-box {
+    display:                flex;
+    flex-flow:              column;
+    justify-content:        center;
     min-height:             5.0rem;
     border-radius:          7.0rem;
-    padding:                0.00rem 1.50rem 0.00rem 1.50rem;
-    border-width:           0.5px;
-    border-color:           white;
+    padding:                0rem 1.5rem 0rem 1.5rem;
+    border:                 0;
     color:                  gray;
     background-color:       rgba(239, 235, 235, 100%);
-    box-shadow:             0px  2px 5px 2px darkgray inset, 
+    box-shadow:             0px  2px 5px 2px rgba(199, 199, 199, 80%) inset, 
                             0px -4px 7px 3px white inset;
+    transition:             all 300ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
+}
+.mc-question-text-box:hover {
+    transform:              scale(1.25);
+    box-shadow:              0px  2px 5px 2px rgba(180, 180, 180, 0.7) inset, 
+                            -1px -1px 7px 3px rgba(255, 255, 255, 0.9) inset;
+    background-color:       rgba(239, 235, 235, 100%);
+    transition:             all 300ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
+}
+.mc-question-text {
+    text-align:             center;
+    vertical-align:         middle;
+    padding:                0.75rem 0.5rem 0.75rem 0.5rem;
+    margin:                 0;
 }
 
 .mc-response-box {
     background-color:       silver;
     color:                  gray;
     padding:                0.25rem;
-    transition:             all 100ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
+    transition:             all 300ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
+    z-index:                1;
 }
 .mc-response-box:hover {
-    transform:              scale3d(1.05, 1.05, 2);
-    box-shadow:             1px 1px 8px 1px  lightcyan;
-    transition:             all 200ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
+    color:                  rebeccapurple;
+    transform:              scale(1.25);
+    box-shadow:             1px  1px  27px  2px  rgba(207, 124, 255, 0.4);
+    transition:             all 300ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
+    z-index:                10;
 }
-
 .mc-response-box:active {
-    transform:              scale(0.97);
-    transition:             all 200ms ease-out;
+    color:                  rebeccapurple;
+    transform:              scale(0.90);
+    box-shadow:             3px  2px  7px  1px  rgba(207, 124, 255, 0.6);
+    transition:             all 100ms ease-out;
+    z-index:                10;
 }
 
 .mc-response-text-box {
-    background-color:       rgba(242, 235, 235, 100%);
+    display:                flex;
+    flex-flow:              column;
+    justify-content:        center;
+    vertical-align:         middle;
+    background-color:       rgb(255, 253, 252);
     min-height:             4.0rem;
-    vertical-align:         center;
     font-size:              110%;
     margin:                 0.25rem;
     padding:                0.25rem;
     border:                 0;
-    box-shadow:              2px  2px 7px 1px  gray inset, 
-                            -2px -2px 7px 1px white inset;
+    box-shadow:             2px  2px 2px 1px  gray inset, 
+                           -2px -2px 4px 2px  white inset;
     transition:             all 100ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
 }
 .mc-response-text-box:hover {
-    background-color:       rgba(255, 248, 248, 100%);
-    transition:             all 200ms ease-out;
+    background-color:       rgb(255, 254, 253);
+    box-shadow:             2px  2px  2px 1px  gray inset, 
+                           -2px -2px  4px 2px  white inset;
+    transition:             all 100ms ease-out;
 }
 .mc-response-text-box:active {
-    background-color:       rgba(242, 235, 235, 100%);
-    box-shadow:              1px  1px 1px 1px  darkcyan inset, 
-                            -1px -1px 0px 0px  cyan inset;
-    transition:             all 100ms ease-out;
+    background-color:       rgb(255, 253, 243);
+    box-shadow:             2px  2px 5px 1px  gray inset, 
+                           -2px -2px 5px 1px  white inset;
+    transition:             all 300ms ease-out;
 }
 .mc-response-text {
     background-color:       transparent;
@@ -103,6 +135,8 @@ header {
     display:                flex;
     flex-flow:              column;
     justify-content:        center;
+    align-items:            center;
+    border:                 1px solid cyan;
 }
 .mc-response-button {
     font:                   courier;
@@ -110,34 +144,34 @@ header {
     font-weight:            300; 
     text-align:             center;  
     color:                  navy; 
+    background-color:       whitesmoke;
     width:                  3rem;
     height:                 3rem;
     border-radius:          2rem;
-    border-width:           0.5px;
-    border-color:           gray;
-    border-style:           solid;
+    border:                 0.5px solid cyan;
     box-shadow:             -15px -15px 1rem 0px  gray inset, 
-                            2px   2px 2px  2px  rgba(250, 250, 250, 50%), 
-                            -2px  -2px 3px  2px  rgba(150, 150, 150, 40%);
-    background-color:       whitesmoke;
-    transition:             color 600ms ease-out, background-color 800ms ease-out,
+                            2px   2px 2px  2px    rgba(250, 250, 250, 50%), 
+                            -2px  -2px 3px  2px   rgba(150, 150, 150, 40%);
+    transition:             color 600ms ease-out, 
+                            background-color 800ms ease-out,
+                            border-color 400ms ease-out 300ms, 
                             transform 400ms cubic-bezier(0.535, 0.005, 0.000, 1.635);
 }
 .mc-response-button:hover {
-    box-shadow:             -15px -15px 1rem 0px  cyan inset, 
-                            2px   2px 3px  2px  rgba(0, 255, 255, 0.7),
-                            -2px  -2px 3px  2px  rgba(0, 255, 255, 0.3);
+    color:                  rgb(0, 225, 225);
     background-color:       lightcyan;
     border-color:           lightgray;
-    color:                  rgb(0, 225, 225);
+    box-shadow:             -15px -15px  1rem  0px  cyan inset, 
+                              2px   2px  3px   2px  rgba(0, 255, 255, 0.7),
+                             -2px  -2px  3px   2px  rgba(0, 255, 255, 0.3);
     transform:              scale(1.25);
     transition:             transform 200ms cubic-bezier(0.535, 0.005, 0.000, 1.635),
                             color 400ms ease-out 200ms;
 }
 .mc-response-button:active {
-    box-shadow:             -15px -15px 1rem 0px  cyan inset, 
-                            0px   0px 15px  5px rgba(0, 255, 255, 0.7),
-                            -2px  -2px 4px  2px  rgba(0, 255, 255, 0.3);
+    box-shadow:             -15px -15px  1rem 0px  cyan inset, 
+                              0px   0px 15px  5px  rgba(0, 255, 255, 0.7),
+                             -2px  -2px  4px  2px  rgba(0, 255, 255, 0.3);
     transform:              scale(0.85);
     transition:             all 100ms ease-out;
 }
@@ -214,3 +248,4 @@ header {
     grid-column:            2;
     grid-row:               6 / span 1;
 }
+
